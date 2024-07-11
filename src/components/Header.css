@@ -3,14 +3,22 @@
   color: #fff;
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-family: 'Roboto', sans-serif; 
 }
 
 .logo {
-  display: flex;
-  align-items: center;
+  width: 300px;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 .copywriting {
@@ -35,4 +43,27 @@
   letter-spacing: 1px;
   margin-top: 10px;
 }
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+  }
+  
+  .logo {
+    width: 250px;
+    padding: 1em;
+  }
+
+  .copywriting {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .navigation {
+    margin: 0;
+  }
+}
+
 
