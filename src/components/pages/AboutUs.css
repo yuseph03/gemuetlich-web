@@ -1,0 +1,85 @@
+.about-us {
+    font-family: 'Roboto', sans-serif;
+    background-color: #222;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    max-width: 60px;
+    margin-right: 10px;
+  }
+  
+  .logo-text {
+    text-align: left;
+  }
+  
+  .nav {
+    text-align: right;
+  }
+  
+  .nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav ul li {
+    display: inline;
+    margin-left: 10px;
+  }
+  
+  .nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .nav ul li a:hover {
+    color: #00ff00; /* Example hover color */
+  }
+  
+  .main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+  
+  .about-section {
+    text-align: center;
+    max-width: 800px;
+  }
+  
+  .about-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .about-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+  }
+  

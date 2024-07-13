@@ -6,6 +6,7 @@
   justify-content: space-around;
   align-items: center;
   font-family: 'Roboto', sans-serif; 
+  text-transform: uppercase;
 }
 
 .logo {
@@ -38,8 +39,6 @@
 
 .header p {
   font-size: 18px;
-  font-family: 'Roboto', sans-serif; 
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 10px;
 }
