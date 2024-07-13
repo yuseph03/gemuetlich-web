@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ErrorPage from './components/pages/ErrorPage.tsx';
 import AboutUs from './components/pages/AboutUs.tsx';
+import Socials from './components/pages/Socials.tsx';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/aboutus",
+    path: "/about",
     element: <AboutUs />,
+  },
+  {
+    path: "/social",
+    element: <Socials />,
   },
 ]);
 

@@ -7,11 +7,11 @@ const MainSection: React.FC = () => {
   return (
     <main className="main">
       <div className="product-card english">
-        <h2>English</h2>
+        <h2>🇺🇸 🦅 🍔</h2>
         <p>Learn English with us!</p>
       </div>
       <div className="product-card german">
-        <h2>German</h2>
+        <h2>🇩🇪 🥨 🍻</h2>
         <p>Lerne Deutsch mit uns!</p>
       </div>
       <img src={english} alt="English" className="english" />

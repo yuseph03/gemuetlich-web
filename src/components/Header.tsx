@@ -11,9 +11,9 @@ const Header: React.FC = () => {
           <p>Join our online classes today!</p>
       </div>
       <nav className="navigation">
-        <a href="/aboutus">About Us</a>
-        <a href="/socials">Socials</a>
-        <a href="/articles">Articles</a>
+        <a href="/about"> 😎 About Us</a>
+        <a href="/social"> 📩 Socials</a>
+        <a href="/blog"> 📚 Blog</a>
       </nav>
     </header>
   );
