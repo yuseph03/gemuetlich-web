@@ -3,7 +3,17 @@
   color: #fff;
   text-align: center;
   padding: 10px;
-  position: relative;
+  margin-top: auto;
+}
+
+.footer p {
+  font-family: 'Roboto', sans-serif;
+  will-change: filter;
+  transition: filter 200ms;
+}
+
+.footer p:hover {
+  filter: drop-shadow(0 0 2em #64ff6caa);
 }
 
   

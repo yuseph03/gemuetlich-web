@@ -1,7 +1,7 @@
 .header {
-  background-color: #111;
+  background-color: #333;
   color: #fff;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -10,16 +10,13 @@
 }
 
 .logo {
-  width: 300px;
+  width: 250px;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 200ms;
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #64ff6caa);
 }
 
 .copywriting {
@@ -35,6 +32,12 @@
   color: #fff;
   margin-left: 20px;
   text-decoration: none;
+  will-change: filter;
+  transition: filter 200ms;
+}
+
+.navigation a:hover {
+  filter: drop-shadow(0 0 2em #64ff6caa);
 }
 
 .header p {

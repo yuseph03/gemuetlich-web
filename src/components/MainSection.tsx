@@ -1,7 +1,5 @@
 import React from 'react';
 import './MainSection.css';
-import english from '../assets/english.png';
-import german from '../assets/german.png'
 
 const MainSection: React.FC = () => {
   return (
@@ -14,8 +12,8 @@ const MainSection: React.FC = () => {
         <h2>🇩🇪 🥨 🍻</h2>
         <p>Lerne Deutsch mit uns!</p>
       </div>
-      <img src={english} alt="English" className="english" />
-      <img src={german} alt="German" className="german" />
+      <img src="src/assets/english.png" alt="English" className="english" />
+      <img src="src/assets/german.png" alt="German" className="german" />
     </main>
   );
 }

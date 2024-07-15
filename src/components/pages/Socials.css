@@ -7,14 +7,6 @@
     flex-direction: column;
   }
   
-  .main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-  }
-  
   .socials-section {
     text-align: center;
     max-width: 800px;
@@ -43,17 +35,11 @@
   
   .socials-grid a:hover {
     transform: scale(1.1);
-    color: #00ff00; /* Example hover color */
+    color: #00ff00;
   }
   
   .socials-grid img {
     max-width: 100px;
     margin-bottom: 10px;
-  }
-  
-  .footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
   }
   

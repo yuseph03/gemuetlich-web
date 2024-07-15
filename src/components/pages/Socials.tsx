@@ -6,7 +6,7 @@ const Socials: React.FC = () => {
     <div className="socials-page">
       <main className="main">
         <section className="socials-section">
-          <h2>Connect with Us</h2>
+          <h2>📩 Connect with Us</h2>
           <div className="socials-grid">
             <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
               <img src="discord-logo.svg" alt="Discord" />
@@ -31,10 +31,6 @@ const Socials: React.FC = () => {
           </div>
         </section>
       </main>
-
-      <footer className="footer">
-        <p>&copy; 2024 Your Language Classes. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
