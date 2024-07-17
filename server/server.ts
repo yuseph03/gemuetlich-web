@@ -1,80 +1,68 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import mongoose, { Document, Schema, Model } from 'mongoose';
-
-interface BlogPost extends Document {
-  title: string;
-  date: string;
-  excerpt: string;
-  link: string;
-}
+import BlogPostModel from './BlogPostModel';
 
 const app = express();
-const port = process.env.PORT || 5000;
-
-app.use(cors());
 app.use(bodyParser.json());
+app.use(cors());
 
-const mongoUri = 'mongodb://localhost:27017/blog';
-const mongoOptions = {
-  useNewUrlParser: true,    
-  useUnifiedTopology: true,  
-  useCreateIndex: true,      
-  useFindAndModify: false, 
-  autoIndex: false,        
-};
-mongoose.connect(mongoUri, mongoOptions)
-  .then(() => {
-    console.log('MongoDB database connection established successfully');
-  })
-  .catch(err => {
-    console.error('MongoDB connection error:', err);
-  });
-
-const blogPostSchema = new Schema<BlogPost>({
-  title: String,
-  date: String,
-  excerpt: String,
-  link: String,
-}, {
-  timestamps: true,
+const mongoURI = 'mongodb://127.0.0.1:27017/blog';
+mongoose.connect(mongoURI).then(() => {
+  console.log('Connected to MongoDB');
+}).catch(err => {
+  console.error('MongoDB connection error:', err);
 });
-const BlogPostModel: Model<BlogPost> = mongoose.model('BlogPost', blogPostSchema);
 
-app.get('/api/posts', async (req: Request, res: Response) => {
+app.get('/api/posts', async (req, res) => {
   try {
     const posts = await BlogPostModel.find();
     res.json(posts);
   } catch (err) {
-    res.status(400).send('Failed to retrieve blog posts');
+    res.status(500).send(err);
   }
 });
 
-app.post('/api/posts', async (req: Request, res: Response) => {
-  const { title, date, excerpt, link } = req.body;
-  const newPost = new BlogPostModel({ title, date, excerpt, link });
-
+app.post('/api/posts', async (req, res) => {
   try {
+    const newPost = new BlogPostModel(req.body);
     await newPost.save();
     res.status(201).json(newPost);
   } catch (err) {
-    res.status(400).send('Failed to create new blog post');
+    res.status(400).send(err);
   }
 });
 
-app.put('/api/posts/:id', async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const { title, date, excerpt, link } = req.body;
-
+app.put('/api/posts/:id', async (req, res) => {
   try {
-    const updatedPost = await BlogPostModel.findByIdAndUpdate(id, { title, date, excerpt, link }, { new: true });
+    const updatedPost = await BlogPostModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedPost) {
+      return res.status(404).send('Post not found');
+    }
     res.json(updatedPost);
   } catch (err) {
-    res.status(400).send(`Failed to update blog post with id ${id}`);
+    res.status(400).send(err);
   }
 });
 
+app.delete('/api/posts/:id', async (req, res) => {
+  try {
+    const deletedPost = await BlogPostModel.findByIdAndDelete(req.params.id);
+    if (!deletedPost) {
+      return res.status(404).send('Post not found');
+    }
+    res.json(deletedPost);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Blog API');
+});
+
+const port = 5000;
 app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+  console.log(`Server running on port ${port}`);
 });
