@@ -5,7 +5,9 @@ export interface BlogPost {
   title: string;
   date: string;
   excerpt: string;
-  link: string;
+  content: string;
+  link?: string;
+  imageUrl?: string;
 }
 
 interface BlogContextType {
@@ -22,6 +24,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const API_BASE_URL = 'http://localhost:5000'; 
     fetchBlogPosts(API_BASE_URL);
+
   }, []);
 
   const fetchBlogPosts = async (API_BASE_URL: string) => {

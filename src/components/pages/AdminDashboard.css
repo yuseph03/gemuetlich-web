@@ -1,0 +1,87 @@
+
+.admin-dashboard {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #222;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .admin-dashboard h2 {
+    text-align: center;
+  }
+  
+  .admin-dashboard form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-dashboard form > div {
+    margin-bottom: 15px;
+  }
+  
+  .admin-dashboard label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .admin-dashboard input,
+  .admin-dashboard .ql-container {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .admin-dashboard .ql-container {
+    height: 300px; 
+    resize: both; 
+  }
+  
+  .admin-dashboard .dropzone {
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .admin-dashboard button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .admin-dashboard button:hover {
+    background-color: #218838;
+  }
+  
+  #content {
+    min-height: 400px;
+    min-width: 400px;
+    font-size: 18px;
+    resize: both;
+  }
+
+  @media (max-width: 768px) {
+    .admin-dashboard {
+      padding: 10px;
+    }
+    
+    .admin-dashboard .ql-container {
+      height: 200px;
+    }
+    #content {
+      min-height: 200px;
+      min-width: 200px;
+      resize: both;
+    }
+  }
+  

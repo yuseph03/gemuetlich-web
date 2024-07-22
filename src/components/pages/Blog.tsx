@@ -1,20 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import './Blog.css';
+import { Link } from 'react-router-dom';
 import { useBlog } from '../../services/BlogContext';
 
-interface BlogPost {
-  id: number;
-  title: string;
-  date: string;
-  excerpt: string;
-  link: string;
-}
-
 const Blog: React.FC = () => {
-  const {posts, loading} = useBlog();
+  const { posts, loading } = useBlog();
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (posts == null) {
+    return <div>No Blog Posts 😩</div>;
   }
 
   return (
@@ -28,9 +25,9 @@ const Blog: React.FC = () => {
                 <h3>{post.title}</h3>
                 <p className="blog-date">📅 {post.date}</p>
                 <p>{post.excerpt}</p>
-                <a href={post.link} className="read-more">
+                <Link to={`/posts/${post._id}`} className="read-more">
                   Read more ➡️
-                </a>
+                </Link>
               </div>
             ))}
           </div>

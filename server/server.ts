@@ -2,7 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import BlogPostModel from './BlogPostModel';
+import path from 'path';
+import multer from 'multer'
+import BlogPostModel from './models/BlogPostModel';
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,6 +16,26 @@ mongoose.connect(mongoURI).then(() => {
 }).catch(err => {
   console.error('MongoDB connection error:', err);
 });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  }
+});
+
+const upload = multer({ storage });
+
+app.post('/api/upload', upload.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('No file uploaded.');
+  }
+  res.json({ filePath: `/uploads/${req.file.filename}` });
+});
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/api/posts', async (req, res) => {
   try {
@@ -31,6 +53,18 @@ app.post('/api/posts', async (req, res) => {
     res.status(201).json(newPost);
   } catch (err) {
     res.status(400).send(err);
+  }
+});
+
+app.get('/api/posts/:id', async (req, res) => {
+  try {
+    const post = await BlogPostModel.findById(req.params.id);
+    if (!post) {
+      return res.status(404).send('Post not found');
+    }
+    res.json(post);
+  } catch (err) {
+    res.status(500).send(err);
   }
 });
 
