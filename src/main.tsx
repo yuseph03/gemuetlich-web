@@ -2,18 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './main.css';
 import MainSection from './components/MainSection';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ErrorPage from './components/pages/ErrorPage';
-import AboutUs from './components/pages/AboutUs';
-import Socials from './components/pages/Socials';
-import BlogPage from './components/pages/BlogPage';
-import BlogPost from './components/pages/BlogPost';
+import AboutUs from './components/Header/AboutUs';
+import Socials from './components/Header/Socials';
+import BlogPage from './components/pages/Blog/BlogPage';
+import BlogPost from './components/pages/Blog/BlogPost';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import AdminDashboard from './components/pages/AdminDashboard';
+import AdminDashboard from './components/pages/AdminDashboard/AdminDashboard';
 
 const router = createBrowserRouter([
   {

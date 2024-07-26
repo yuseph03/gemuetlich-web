@@ -1,7 +1,7 @@
 import React from 'react';
 import './Blog.css';
 import { Link } from 'react-router-dom';
-import { useBlog } from '../../services/BlogContext';
+import { useBlog } from '../../../services/BlogContext';
 
 const Blog: React.FC = () => {
   const { posts, loading } = useBlog();
