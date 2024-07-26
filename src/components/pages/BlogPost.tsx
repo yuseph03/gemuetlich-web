@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './BlogPost.css';
-
-interface IBlogPost {
-  _id: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  content: string;
-  link?: string;
-  imageUrl?: string;
-}
+import { BlogPost as IBlogPost } from '../../types/types';
 
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -49,7 +40,9 @@ const BlogPost: React.FC = () => {
       <h2>{post.title}</h2>
       <p className="blog-date">📅 {new Date(post.date).toLocaleDateString()}</p>
       {post.imageUrl && <img src={`http://localhost:5000${post.imageUrl}`} alt={post.title} />}
-      <div className="blog-content">{post.content}</div>
+      <div className="blog-content">
+        <p>{post.content}</p>
+      </div>
     </div>
   );
 };

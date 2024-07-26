@@ -6,7 +6,6 @@ interface BlogPost extends Document {
     date: string;
     excerpt: string;
     content: string;
-    link?: string;
     imageUrl?: string;
 }
   
@@ -15,7 +14,6 @@ const blogPostSchema = new mongoose.Schema<BlogPost>({
     date: { type: String, required: true },
     excerpt: { type: String, required: true },
     content: { type: String, required: true },
-    link: { type: String, required: true },
     imageUrl: { type: String, required: false},
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Blog from './Blog';
-import { BlogProvider } from '../../services/BlogContext';
+import { BlogProvider } from '../../services/BlogProvider';
 
 const BlogPage: React.FC = () => {
   return (

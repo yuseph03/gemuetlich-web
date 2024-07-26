@@ -21,9 +21,9 @@ const Blog: React.FC = () => {
           <h2>📝 Our Blog</h2>
           <div className="blog-list">
             {posts.map((post) => (
-              <div key={post._id} className="blog-post">
+              <div key={post._id} className="blog-post-review">
                 <h3>{post.title}</h3>
-                <p className="blog-date">📅 {post.date}</p>
+                <p className="blog-date-review">📅 {post.date}</p>
                 <p>{post.excerpt}</p>
                 <Link to={`/posts/${post._id}`} className="read-more">
                   Read more ➡️

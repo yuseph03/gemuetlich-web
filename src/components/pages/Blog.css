@@ -30,24 +30,25 @@
     gap: 20px;
   }
   
-  .blog-post {
+  .blog-post-review {
     background-color: #333;
     padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    overflow-wrap: break-word; 
   }
   
-  .blog-post:hover {
+  .blog-post-review:hover {
     transform: scale(1.02);
     background-color: #444;
   }
   
-  .blog-post h3 {
+  .blog-post-review h3 {
     font-size: 24px;
     margin-bottom: 10px;
   }
   
-  .blog-date {
+  .blog-date-review {
     font-size: 14px;
     color: #ccc;
     margin-bottom: 10px;
