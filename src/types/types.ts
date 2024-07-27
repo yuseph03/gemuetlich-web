@@ -12,4 +12,3 @@ export interface BlogContextType {
     posts: BlogPost[];
     loading: boolean;
 }
-
