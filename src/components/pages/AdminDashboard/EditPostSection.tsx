@@ -35,6 +35,8 @@ const EditPostSection: React.FC = () => {
 
   return (
     <div>
+      <br />
+      <h1>Current blog posts</h1>
       {selectedPost ? (
         <EditPostForm post={selectedPost} onPostUpdated={handleAction} onCancel={handleAction}/>
       ) : (
