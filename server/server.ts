@@ -2,21 +2,22 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
-import multer from 'multer';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
-import postRoutes from './routes/postRoutes';
 import dbConnect from './utils/dbConnect';
-import { serveStaticFiles } from './middleware/staticFiles';
-import { upload } from './middleware/fileUpload';
+import postRoutes from './routes/postRoutes';
+import authRoutes from './routes/authRoutes';
+import { authenticateToken } from './middleware/authMiddleware';
+import { upload } from './middleware/uploadMiddleware';
+import { serveStaticFiles } from './middleware/staticMiddleware';
 
 dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173', 
   optionsSuccessStatus: 200,
   credentials: true,
 };
@@ -27,7 +28,7 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "data:", "http://localhost:5000"], 
+      imgSrc: ["'self'", "data:", process.env.CORS_ORIGIN || 'http://localhost:5000'], 
       scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       connectSrc: ["'self'"],
@@ -49,11 +50,9 @@ const limiter = rateLimit({
   max: 100, 
   message: 'Too many requests from this IP, please try again later.'
 });
-
 app.use(limiter);
 
 serveStaticFiles(app);
-
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
@@ -61,6 +60,12 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
     return res.status(400).send('No file uploaded.');
   }
   res.json({ filePath: `/uploads/${req.file.filename}` });
+});
+
+app.use('/api/auth', authRoutes);
+
+app.use('/api/admin', authenticateToken, (req, res) => {
+  res.send('Protected route accessed!');
 });
 
 app.use(postRoutes);
@@ -71,3 +76,9 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+app.use((err: any, req: any, res: any, next: any) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
+});
+

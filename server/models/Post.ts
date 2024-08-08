@@ -17,6 +17,6 @@ const blogPostSchema = new mongoose.Schema<BlogPost>({
     imageUrl: { type: String, required: false},
 });
 
-const BlogPostModel = mongoose.model<BlogPost>('BlogPost', blogPostSchema);
+const Post = mongoose.model<BlogPost>('BlogPost', blogPostSchema);
   
-export default BlogPostModel;
+export default Post;

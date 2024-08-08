@@ -1,12 +1,12 @@
 import express from 'express';
 import { getPosts, getPostById, createPost, updatePost, deletePost } from '../controllers/postController';
 
-const router = express.Router();
+const postRoutes = express.Router();
 
-router.get('/api/posts', getPosts);
-router.get('/api/posts/:id', getPostById);
-router.post('/api/posts', createPost);
-router.put('/api/posts/:id', updatePost);
-router.delete('/api/posts/:id', deletePost);
+postRoutes.get('/api/posts', getPosts);
+postRoutes.get('/api/posts/:id', getPostById);
+postRoutes.post('/api/posts', createPost);
+postRoutes.put('/api/posts/:id', updatePost);
+postRoutes.delete('/api/posts/:id', deletePost);
 
-export default router;
+export default postRoutes;

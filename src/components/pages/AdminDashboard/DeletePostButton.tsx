@@ -10,9 +10,10 @@ const DeletePostButton: React.FC<DeletePostButtonProps> = ({ postId, onPostDelet
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
 
-    const API_BASE_URL = 'http://localhost:5000';
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+    
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/posts/${postId}`, {
         method: 'DELETE',
       });
 

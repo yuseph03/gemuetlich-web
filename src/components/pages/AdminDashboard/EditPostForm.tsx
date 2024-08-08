@@ -28,7 +28,7 @@ const EditPostForm: React.FC<EditPostFormProps> = ({ post, onPostUpdated, onCanc
 
   const handleUpdate = async () => {
     setLoading(true);
-    const API_BASE_URL = 'http://localhost:5000';
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
     let uploadedImageUrl = imageUrl;
 
     if (imageFile) {
@@ -46,7 +46,7 @@ const EditPostForm: React.FC<EditPostFormProps> = ({ post, onPostUpdated, onCanc
     const updatedPost = { ...post, title, excerpt: content.slice(0, 100) + "...", imageUrl: uploadedImageUrl };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${post._id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/posts/${post._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedPost),

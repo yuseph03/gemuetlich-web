@@ -17,10 +17,12 @@ const EditPostSection: React.FC = () => {
     fetchPosts()
     setSelectedPost(null);
   }
+  
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts');
+      const response = await fetch(`${API_BASE_URL}/api/posts`);
       const data = await response.json();
       setPosts(data);
       setLoading(false);

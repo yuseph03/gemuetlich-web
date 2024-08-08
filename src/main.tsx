@@ -2,18 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './main.css';
 import MainSection from './components/MainSection';
-import Header from './components/Header/Header';
+import Header from './components/header/Header';
 import Footer from './components/Footer';
 import ErrorPage from './components/pages/ErrorPage';
-import AboutUs from './components/Header/AboutUs';
-import Socials from './components/Header/Socials';
+import AboutUs from './components/header/AboutUs';
+import Socials from './components/header/Socials';
 import BlogPage from './components/pages/Blog/BlogPage';
 import BlogPost from './components/pages/Blog/BlogPost';
+import ProtectedRoute from './components/pages/ProtectedRoute';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import AdminDashboard from './components/pages/AdminDashboard/AdminDashboard';
+import Login from './components/pages/AdminDashboard/Login';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +45,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminDashboard />,
+    element: (
+      <ProtectedRoute>
+        <AdminDashboard />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+  }, 
+  {
+    path: '/login',
+    element: <Login />,
     errorElement: <ErrorPage />,
   }
 ]);
