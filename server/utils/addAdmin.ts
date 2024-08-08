@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import User from '../models/User';
 import dotenv from 'dotenv';
 
@@ -25,4 +24,4 @@ mongoose.connect(mongoURI)
 
     mongoose.connection.close();
 })
-.catch((err: any) => console.error('MongoDB connection error:', err));
+.catch((err: Error) => console.error('MongoDB connection error:', err));

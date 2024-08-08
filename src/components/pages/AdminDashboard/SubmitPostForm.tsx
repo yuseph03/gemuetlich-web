@@ -79,9 +79,12 @@ const SubmitPostForm: React.FC = () => {
 
       alert('Blog post added successfully!');
       resetForm();
-    } catch (error: any) {
-      console.error('Error adding blog post:', error);
-      alert(`Error adding blog post: ${error.message}`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Error adding blog post:', error.message);
+      } else {
+        console.error('An unexpected error occurred');
+      }
     } finally {
       setLoading(false);
     }

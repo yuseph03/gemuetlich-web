@@ -1,4 +1,4 @@
-import express from 'express';
+import express,{ Request, Response, ErrorRequestHandler } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
@@ -77,8 +77,11 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-app.use((err: any, req: any, res: any, next: any) => {
+const errorHandler: ErrorRequestHandler = (err, req: Request, res: Response) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Something went wrong!' });
-});
+};
+
+app.use(errorHandler);
+
 
