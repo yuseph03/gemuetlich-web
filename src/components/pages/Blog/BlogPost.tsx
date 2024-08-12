@@ -7,11 +7,13 @@ const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<IBlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+  
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
   useEffect(() => {
     const fetchBlogPost = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/posts/${id}`);
+        const response = await fetch(`${API_BASE_URL}/api/posts/${id}`);
         if (!response.ok) {
           throw new Error('Post not found');
         }

@@ -1,4 +1,9 @@
-.main {
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.language-select {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -8,7 +13,7 @@
   position: relative;
 }
 
-.product-card {
+.product-card-select {
   background-color: #333;
   color: #fff;
   padding: 20px;
@@ -18,66 +23,99 @@
   position: relative;
 }
 
-.main img {
+.language-select img {
   position: absolute;
   max-width: 300px;
   max-height: 200px;
   border-radius: 8px;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.7s ease, opacity 0.7s ease;
   opacity: 0;
 }
 
-.main img.english {
+.language-select img.english {
   transform: translateX(-100%);
-  left: 30%;
+  left: -10%;
 }
 
-.main img.german {
+.language-select img.german {
   transform: translateX(100%);
-  right: 30%;
+  right: -10%;
 }
 
-.product-card.english:hover ~ .english {
+.product-card-select.english:hover ~ .english {
   transform: translateX(0);
   opacity: 1;
 }
 
-.product-card.german:hover ~ .german {
+.product-card-select.german:hover ~ .german {
   transform: translateX(0);
   opacity: 1;
+}
+
+.product-card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+  padding: 10px;
+  text-align: center; 
+  margin: 1em;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform:translateY(5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #333;
+}
+
+.product-card h3 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.product-card p {
+  margin: 5px 0;
 }
 
 @media (max-width: 600px) {
-  .main {
+  .language-select {
     flex-direction: column;
     padding: 20px;
     height: auto;
   }
 
-  .product-card {
+  .product-card-select {
     width: 100%;
     max-width: 300px;
     margin: 20px 0;
   }
 
-  .main img.english {
-    position: fixed;
-    max-width: 50%;
-    max-height: 20%;
-    top: 45%;
-    left: -15%;
-    transform: translateX(-50%);
+  .language-select img.english {
+    visibility: hidden;
   }
-  .main img.german {
-    position: fixed;
-    max-width: 50%;
-    max-height: 20%;
-    right: 20%;
-    transform: translateX(100%);
+  
+  .language-select img.german {
+    visibility: hidden;
   }
 
-  .product-card.english:hover ~ .english, .product-card.german:hover ~ .german {
+  .product-card-select.english:hover ~ .english, .product-card-select.german:hover ~ .german {
     transform: translateX(50%);
     opacity: 1;
+  }
+
+  .product-card-container {
+    flex-direction: column;
   }
 }
