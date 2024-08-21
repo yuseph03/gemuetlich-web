@@ -4,11 +4,13 @@ Welcome to the Language Classes Management System! This project is designed to m
 
 ## Preview
 
-![Admin Dashboard Preview]
-#TODO
+Admin Dashboard Preview: 
 
-![Product Cards Preview](path/to/product-cards-preview.png)
-#TODO
+TODO
+
+Product Cards Preview:
+
+[product_cards.webm](https://github.com/user-attachments/assets/5011a432-3b9d-4077-86a6-8390544c7189)
 
 ## Table of Contents
 
